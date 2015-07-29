@@ -10,7 +10,6 @@ import os
 import sys
 from librar import archive
 import re
-from six.moves import getcwdu
 
 parser = argparse.ArgumentParser(description="Creates a .cbr file from a list of image files")
 
@@ -24,6 +23,7 @@ parser.add_argument('-f',
                     metavar="format",
                     nargs="+",
                     default=["png, jpg, jpeg"])
+parser.add_argument('-o', '--output', type=str, help="The output filename", metavar="output", default="")
 res = parser.parse_args()
 
 if not os.path.isdir(res.folder):
@@ -38,11 +38,16 @@ def file_types(path, *extensions):
         if re.match(r".*\." + "|".join(extensions), file_name):
             yield os.path.join(path, file_name)
 
-
-directory = os.path.basename(os.path.normpath(res.folder))
-filename = directory + ".cbr"
-
-rarfile = archive.Archive(filename, getcwdu)
+if ref.output:
+    filename = ref.output
+else:
+    directory = os.path.basename(os.path.normpath(res.folder))
+    filename = directory + ".cbr"
+if six.PY2:
+    basedir = os.getcwdu()
+else:
+    basedir = os.getcwd()
+rarfile = archive.Archive(filename, basedir)
 rarfile.use_syslog()
 for filename in file_types(res.folder, *res.formats):
     rarfile.add_file(filename)
