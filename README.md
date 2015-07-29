@@ -10,14 +10,14 @@ Usage
 
 > usage: img2cbr.py [-h] [-f format [format ...]] [-o output] folder
 
-Creates a .cbr file from a list of image files
+> Creates a .cbr file from a list of image files
 
-positional arguments:
-  folder                the name of the directory
+> positional arguments:
+>   folder                the name of the directory
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -f format [format ...], --formats format [format ...]
-                        The filetypes to process. png, jpg, jpeg by default
-  -o output, --output output
-                        The output filename
+> optional arguments:
+>   -h, --help            show this help message and exit
+>   -f format [format ...], --formats format [format ...]
+>                         The filetypes to process. png, jpg, jpeg by default
+>   -o output, --output output
+>                         The output filename
