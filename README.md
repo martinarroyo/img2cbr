@@ -8,7 +8,7 @@ The script depends on miebach's [lib-rar-python](https://github.com/miebach/lib-
 Usage
 -----
 
-> usage: img2cbr.py [-h] [-f format [format ...]] [-o output] folder
+> usage: img2cbr.py [-h] [-f [format [format ...]]] [-o output] [-v] folder
 
 > Creates a .cbr file from a list of image files
 
@@ -21,3 +21,4 @@ Usage
 >                         The filetypes to process. png, jpg, jpeg by default
 >   -o output, --output output
 >                         The output filename
+>  -v, --verbose
